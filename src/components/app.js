@@ -9,7 +9,7 @@ import { resetGame } from "../actions";
 
 class App extends Component {
   renderApp() {
-    if (this.props.scale.toString() === this.props.playedNotes.toString() || this.props.playedNotes.length === 2) {
+    if (this.props.scale.toString() === this.props.playedNotes.toString()) {
       if (this.props.score === 4) {
         const sound = new Howl({
           src: [`./src/audio/WinSong.mp3`],
