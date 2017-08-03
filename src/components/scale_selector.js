@@ -6,8 +6,9 @@ import { changeScale } from "../actions";
 class ScaleSelector extends Component {
   constructor(props) {
     super(props);
+    const scale = (this.props.scale.toString() === "C,D,E,F,G,A,B,Co") ? "major" : "minor";
     this.state = {
-      scale: "major"
+      scale: scale
     };
   }
   handleClick(scale) {
@@ -39,4 +40,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({changeScale}, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(ScaleSelector);
+function mapStateToProps(state) {
+  return { scale: state.scale };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ScaleSelector);

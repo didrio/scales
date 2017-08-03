@@ -7,7 +7,7 @@ class InstrumentSelector extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      instrument: "starbell"
+      instrument: this.props.instrument
     };
   }
   handleClick(instrument) {
@@ -38,8 +38,12 @@ class InstrumentSelector extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return { instrument: state.instrument };
+}
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({changeInstrument}, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(InstrumentSelector);
+export default connect(mapStateToProps, mapDispatchToProps)(InstrumentSelector);
